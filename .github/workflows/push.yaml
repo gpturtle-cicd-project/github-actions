@@ -1,0 +1,12 @@
+name: push-overflow
+# 어떤 액션으로 trigger시킬지 명시
+on: push
+
+# 어떤 job들로 구성되어 있는지 표시
+jobs:
+  push-job:
+    # 실행시킬 runner 명시
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        run: echo hello world
