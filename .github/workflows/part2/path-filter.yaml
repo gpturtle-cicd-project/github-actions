@@ -1,0 +1,16 @@
+name: path-filter
+on:
+  push:
+    # path의 경우, 프로젝트의 루트 디렉토리에서 시작
+    paths:
+      # push 시, part1 폴더에 변화가 생길 때만 트리거
+      - ".github/workflows/part1/*"
+      #  (!)는 제외 => 그러나, part1 폴더에서 push.yaml 파일은 변화가 생겨도 무시
+      - "!.github/workflows/part1/push.yaml"
+
+jobs:
+  path-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo hello
+        run: echo hello
