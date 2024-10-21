@@ -1,0 +1,12 @@
+name: branch-filter
+on:
+  push:
+    # 필터 기능. dev 브랜치에 push가 발생했을 때만 트리거가 됨.
+    branches: ["dev"]
+
+jobs:
+  branch-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: echo hello
