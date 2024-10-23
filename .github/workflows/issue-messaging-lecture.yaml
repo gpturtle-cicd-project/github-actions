@@ -13,4 +13,4 @@ jobs:
         id: get-keyword
         run: echo "message=HI I'M TEST MESSAGE" >> $GITHUB_OUTPUT
       - name: Echo Output
-        run: echo ${{steps.get-keyword.outputs}}
+        run: echo ${{steps.get-keyword.outputs.message}}
