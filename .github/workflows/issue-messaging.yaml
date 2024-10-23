@@ -14,16 +14,57 @@ jobs:
         with:
           payload: |
             {
-                "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-                "blocks": [
+            "type": "actions",
+            "block_id": "actions1",
+            "elements": [
                 {
-                    "type": "section",
+                "type": "static_select",
+                "placeholder":{
+                    "type": "plain_text",
+                    "text": "Which witch is the witchiest witch?"
+                },
+                "action_id": "select_2",
+                "options": [
+                    {
                     "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                        "type": "plain_text",
+                        "text": "Matilda"
+                    },
+                    "value": "matilda"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Glinda"
+                    },
+                    "value": "glinda"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Granny Weatherwax"
+                    },
+                    "value": "grannyWeatherwax"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Hermione"
+                    },
+                    "value": "hermione"
                     }
-                }
                 ]
+                },
+                {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Cancel"
+                },
+                "value": "cancel",
+                "action_id": "button_1"
+                }
+            ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
@@ -35,16 +76,57 @@ jobs:
         with:
           payload: |
             {
-                "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-                "blocks": [
+            "type": "actions",
+            "block_id": "actions1",
+            "elements": [
                 {
-                    "type": "section",
+                "type": "static_select",
+                "placeholder":{
+                    "type": "plain_text",
+                    "text": "Which witch is the witchiest witch?"
+                },
+                "action_id": "select_2",
+                "options": [
+                    {
                     "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                        "type": "plain_text",
+                        "text": "Matilda"
+                    },
+                    "value": "matilda"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Glinda"
+                    },
+                    "value": "glinda"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Granny Weatherwax"
+                    },
+                    "value": "grannyWeatherwax"
+                    },
+                    {
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Hermione"
+                    },
+                    "value": "hermione"
                     }
-                }
                 ]
+                },
+                {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Cancel"
+                },
+                "value": "cancel",
+                "action_id": "button_1"
+                }
+            ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_NORMAL_ISSUE_URL }}
