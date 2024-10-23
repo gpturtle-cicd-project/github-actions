@@ -23,9 +23,14 @@ jobs:
 
       - name: Send Slack Message
         if: always()
-        run: |
-          if [ "${{steps.create-repo.outputs.success}}" = "true" ]; then
-            echo "Repository created successfully!" # Slack 메시지 전송 로직 추가
-          else
-            echo "Failed to create repository!" # 실패 알림 Slack 메시지 로직 추가
-          fi
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          payload: "-"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        # run: |
+        #   if [ "${{steps.create-repo.outputs.success}}" = "true" ]; then
+        #     echo "Repository created successfully!" # Slack 메시지 전송 로직 추가
+        #   else
+        #     echo "Failed to create repository!" # 실패 알림 Slack 메시지 로직 추가
+        #   fi
