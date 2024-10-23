@@ -1,20 +1,33 @@
 name: issue-messaging-lecture
-on: push
-#   issues:
-#     types: push
+on:
+  issues:
+    types: opened
 
 jobs:
   get-keyword:
     runs-on: ubuntu-latest
     outputs:
-      issue-level: ${{steps.get-keyword.outputs.level}}
+      issue-level: ${{ steps.get-keyword.outputs.level }}
     steps:
+      - name: Checkout File
+        uses: actions/checkout@v4
+
       - name: Get Keyword At File
         id: get-keyword
-        run: echo "level=high" >> $GITHUB_OUTPUT
+        run: |
+          keywords=$(cat keyword-list.txt)
+          level="Undefined"
+          for keyword in $keywords; do
+            if [[ "${{ github.event.issue.title }}" == *"$keyword"* ]]; then
+              level="$keyword"
+              break
+            fi
+          done
+          echo "level=$level" >> $GITHUB_OUTPUT
+
   print-keyword:
     runs-on: ubuntu-latest
     needs: get-keyword
     steps:
       - name: Print Keyword
-        run: echo ${{needs.get-keyword.outputs.issue-level}}
+        run: echo ${{ needs.get-keyword.outputs.issue-level }}
