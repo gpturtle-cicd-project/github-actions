@@ -9,7 +9,23 @@ jobs:
     steps:
       - name: Handle Critical Issue
         if: contains(github.event.issue.title, 'critical')
-        run: echo critical issue created.
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          payload: |
+            {
+                "key": "value",
+                "foo": "critical"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
       - name: Handle Normal Issue
         if: contains(github.event.issue.title, 'normal')
-        run: echo normal issue created.
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          payload: |
+            {
+                "key": "value",
+                "foo": "normal"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
