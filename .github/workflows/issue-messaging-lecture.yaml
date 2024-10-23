@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Get Keyword At File
         id: get-keyword
-        run: echo "message=HI I'M TEST MESSAGE" >> $GITHUB_OUTPUT
+        run: echo "message=HI IM TEST MESSAGE" >> $GITHUB_OUTPUT
       - name: Echo Output
         run: echo ${{steps.get-keyword.outputs.message}}
