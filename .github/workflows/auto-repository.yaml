@@ -13,7 +13,7 @@ jobs:
       - name: Create Repository
         id: create-repo
         run: |
-          if gh repo create gpturtle-cicd-project/${{inputs.repository-name}}-action-repo --public; then
+          if gh repo create gpturtle-cicd-project/${{inputs.repository-name}}-action-repo --public --add-readme; then
             echo "success=true" >> "$GITHUB_OUTPUT"
           else
             echo "success=false" >> "$GITHUB_OUTPUT"
@@ -25,7 +25,23 @@ jobs:
         if: always()
         uses: slackapi/slack-github-action@v1.27.0
         with:
-          payload: "-"
+          payload: |
+            {
+            "text": "Deployment finished (Completed)",
+            "attachments": [
+                {
+                "pretext": "Deployment finished",
+                "color": "28a745",
+                "fields": [
+                    {
+                    "title": "Status",
+                    "short": true,
+                    "value": "Completed"
+                    }
+                ]
+                }
+            ]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         # run: |
