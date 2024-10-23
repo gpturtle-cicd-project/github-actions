@@ -12,3 +12,5 @@ jobs:
     steps:
       - name: create-repository
         run: gh repo create ${{inputs.repository-name}}
+        env:
+          GH_TOKEN: ${{ github.token }}
