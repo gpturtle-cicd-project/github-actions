@@ -27,16 +27,16 @@ jobs:
         with:
           payload: |
             {
-            "text": "Deployment ${{steps.create-repo.outcome}}",
+            "text": "create repo result ${{steps.create-repo.outcome}}",
             "attachments": [
                 {
-                "pretext": "Deployment ${{steps.create-repo.outcome}}",
+                "pretext": "create repo result ${{steps.create-repo.outcome}}",
                 "color": "28a745",
                 "fields": [
                     {
                     "title": "Status",
                     "short": true,
-                    "value": "Completed"
+                    "value": "${{steps.create-repo.outcome}}"
                     }
                 ]
                 }
@@ -44,6 +44,7 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
         # run: |
         #   if [ "${{steps.create-repo.outputs.success}}" = "true" ]; then
         #     echo "Repository created successfully!" # Slack 메시지 전송 로직 추가
