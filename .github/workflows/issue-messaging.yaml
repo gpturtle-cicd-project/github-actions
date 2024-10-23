@@ -13,8 +13,20 @@ jobs:
         with:
           payload: |
             {
-                "key": "value",
-                "foo": "critical"
+              "text": "critical (In Progress)",
+              "attachments": [
+                {
+                  "pretext": "critical",
+                  "color": "dbab09",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "In Progress"
+                    }
+                  ]
+                }
+              ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
@@ -24,8 +36,20 @@ jobs:
         with:
           payload: |
             {
-                "key": "value",
-                "foo": "normal"
+              "text": "normal (In Progress)",
+              "attachments": [
+                {
+                  "pretext": "normal",
+                  "color": "dbab09",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "In Progress"
+                    }
+                  ]
+                }
+              ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
