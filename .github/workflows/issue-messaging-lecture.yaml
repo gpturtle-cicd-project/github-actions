@@ -7,10 +7,14 @@ jobs:
   get-keyword:
     runs-on: ubuntu-latest
     outputs:
-      issue-level: "hi"
+      issue-level: ${{steps.get-keyword.outputs.level}}
     steps:
       - name: Get Keyword At File
         id: get-keyword
-        run: echo "message=HI IM TEST MESSAGE" >> $GITHUB_OUTPUT
-      - name: Echo Output
-        run: echo ${{steps.get-keyword.outputs.message}}
+        run: echo "level=high" >> $GITHUB_OUTPUT
+  print-keyword:
+    runs-on: ubuntu-latest
+    needs: get-keyword
+    steps:
+      - name: Print Keyword
+        run: echo ${{needs.get-keyword.outputs.issue-level}}
