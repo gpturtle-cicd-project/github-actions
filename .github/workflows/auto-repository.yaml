@@ -13,7 +13,7 @@ jobs:
       - name: Create Repository
         id: create-repository
         run: |
-          gh repo create gpturtle-cicd-project/${{inputs.repository-nae}}-action-repo --public
+          gh repo create gpturtle-cicd-project/${{inputs.repository-name}}-action-repo --public
           echo "success=true" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
