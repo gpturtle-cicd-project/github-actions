@@ -27,10 +27,10 @@ jobs:
         with:
           payload: |
             {
-            "text": "Deployment finished (Completed)",
+            "text": "Deployment ${{steps.create-repo.outcome}}",
             "attachments": [
                 {
-                "pretext": "Deployment finished",
+                "pretext": "Deployment ${{steps.create-repo.outcome}}",
                 "color": "28a745",
                 "fields": [
                     {
