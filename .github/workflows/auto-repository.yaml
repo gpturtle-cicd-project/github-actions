@@ -10,7 +10,13 @@ jobs:
   create-repository:
     runs-on: ubuntu-latest
     steps:
-      - name: create-repository
-        run: gh repo create gpturtle-cicd-project/${{inputs.repository-name}}-action-repo --public
+      - name: Create Repository
+        id: create-repository
+        run: |
+          gh repo create gpturtle-cicd-project/${{inputs.repository-name}}-action-repo --public
+          echo "success=true" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
+      - name: Send Slack Message
+        if: always()
+        run: echo ${{steps.create-repository.outputs.success}}
