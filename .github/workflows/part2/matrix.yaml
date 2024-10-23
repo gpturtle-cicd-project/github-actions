@@ -1,0 +1,17 @@
+name: matrix
+on: push
+
+jobs:
+  get-matrix:
+    strategy:
+      matrix:
+        # os 및 version을 matrix에 할당
+        os: [windows-latest, ubuntu-latest]
+        version: [12, 14]
+    # runs-on 변수를 통해 총 2개 버전의 os로 실행하게 됨.
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: check matrix
+        run: |
+          echo ${{ matrix.os }}
+          echo ${{ matrix.version }}

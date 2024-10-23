@@ -1,0 +1,14 @@
+name: auto-repository
+on:
+  workflow_dispatch:
+    inputs:
+      repository-name:
+        required: true
+        description: "레포지토리 input값 입력"
+
+jobs:
+  create-repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create-repository
+        run: echo ${{inputs.repository-name}}
