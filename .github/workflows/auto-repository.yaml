@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: create-repository
-        run: gh repo create ${{inputs.repository-name}}
+        run: gh repo create ${{inputs.repository-name}} --public
         env:
           GH_TOKEN: ${{ github.token }}
