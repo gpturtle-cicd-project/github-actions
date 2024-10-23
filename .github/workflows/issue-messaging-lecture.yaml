@@ -1,0 +1,16 @@
+name: issue-messaging-lecture
+on: push
+#   issues:
+#     types: push
+
+jobs:
+  get-keyword:
+    runs-on: ubuntu-latest
+    outputs:
+      issue-level: "hi"
+    steps:
+      - name: Get Keyword At File
+        id: get-keyword
+        run: echo "HI I'M TEST TEXT" >> $GITHUB_OUTPUT
+      - name: Echo Output
+        run: echo ${{steps.get-keyword.outputs}}
