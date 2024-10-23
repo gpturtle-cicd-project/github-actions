@@ -1,0 +1,12 @@
+name: issue-messaging
+on:
+  issues:
+    types: opened
+
+jobs:
+  issue-handling:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Handle Critical Issue
+        run: echo ${{github.event.issue}}
+    # if: github.event.issue.tit
