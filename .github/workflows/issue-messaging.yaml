@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Handle Critical Issue
+        id: slack-critical
         if: contains(github.event.issue.title, 'critical')
         uses: slackapi/slack-github-action@v1.27.0
         with:
@@ -28,6 +29,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
       - name: Handle Normal Issue
+        id: slack-normal
         if: contains(github.event.issue.title, 'normal')
         uses: slackapi/slack-github-action@v1.27.0
         with:
