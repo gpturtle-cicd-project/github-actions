@@ -13,20 +13,16 @@ jobs:
         with:
           payload: |
             {
-              "text": "critical (In Progress)",
-              "attachments": [
+                "text": "GitHub Action build result: ${{ job.status }}",
+                "blocks": [
                 {
-                  "pretext": "critical",
-                  "color": "dbab09",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
+                    "type": "section",
+                    "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}"
                     }
-                  ]
                 }
-              ]
+                ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
@@ -36,20 +32,16 @@ jobs:
         with:
           payload: |
             {
-              "text": "normal (In Progress)",
-              "attachments": [
+                "text": "GitHub Action build result: ${{ job.status }}",
+                "blocks": [
                 {
-                  "pretext": "normal",
-                  "color": "dbab09",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
+                    "type": "section",
+                    "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}"
                     }
-                  ]
                 }
-              ]
+                ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_NORMAL_ISSUE_URL }}
