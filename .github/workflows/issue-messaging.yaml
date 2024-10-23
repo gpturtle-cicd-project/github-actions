@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Handle Critical Issue
-        run: echo  ${{toJson(github.event.issue)}}
-    # if: github.event.issue.tit
+        if: contains(github.event.issue.title, 'critical')
+        run: echo critical issue created.
+      - name: Handle Normal Issue
+        if: contains(github.event.issue.title, 'normal')
+        run: echo normal issue created.
