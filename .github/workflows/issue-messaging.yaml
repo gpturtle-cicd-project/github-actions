@@ -26,6 +26,7 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_CRITICAL_ISSUE_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
       - name: Handle Normal Issue
         if: contains(github.event.issue.title, 'normal')
         uses: slackapi/slack-github-action@v1.27.0
@@ -45,3 +46,4 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_NORMAL_ISSUE_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
