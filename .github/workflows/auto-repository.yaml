@@ -13,4 +13,4 @@ jobs:
       - name: create-repository
         run: gh repo create ${{inputs.repository-name}} --public
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TOKEN }}
